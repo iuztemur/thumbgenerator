@@ -1,0 +1,30 @@
+input[type="text"], input[type="password"], textarea {
+	.inline-block;
+	padding: 8px 10px;
+	font:@default-size @sans;
+	line-height: auto;
+	background-color: #fff;
+	border:1px solid transparent;
+	.border-radius(2px);
+	outline:none;
+	-webkit-font-smoothing:antialiased;
+
+	&:hover {
+		.box-shadow(0px 0px 0px 4px darken(@bg,10));
+	}
+	&:focus {
+		.box-shadow(0px 0px 0px 4px @blue);
+	}
+}
+
+button {
+	outline:none;
+	border:none;
+	margin:0;
+}
+
+textarea {
+	min-height: 100px;
+	resize: none;
+	-webkit-font-smoothing:antialiased;
+}

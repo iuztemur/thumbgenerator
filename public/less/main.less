@@ -1,0 +1,221 @@
+/*==============================
+=            Import            =
+==============================*/
+.reset();
+@import "mixins/all"; // Copyright & Documentation: http://clearleft.github.com/clearless/
+@import "ui";
+@import "forms";
+@import "variables";
+@import "typography";
+/*==================================
+=            Variables            =
+==================================*/
+
+
+/*==============================
+=            Layout            =
+==============================*/
+html, body {
+	height: 100%;
+}
+body {
+	background-color: @bg;
+}
+
+/*==============================
+=            Header            =
+==============================*/
+.logo {
+	.inline-block;
+	.size(141px,42px);
+	text-indent: -9999px;
+	.bg("../img/logo/logo.png");
+}
+
+
+/*===============================
+=            Sidebar            =
+===============================*/
+aside {
+	.pos-lt(0,0);
+	.size(300px,100%);
+	padding: 30px 40px;
+	background-color: @aside;
+	.mod {
+		margin: 30px -40px;
+		padding: 20px 40px;
+		border:1px solid #252A2D;
+		border-left:none;
+		border-right:none;
+		color:@text;
+		font:700 11px @roboto;
+
+		&>span {
+			position: relative;
+			top: -13px;
+			margin-right: 10px;
+			&:last-child {
+				margin-left: 9px;
+				margin-right: 0;
+			}
+		}
+	}
+
+	.radio {
+		.inline-block;
+		.size(80px,36px);
+		background-color: #151819;
+		border:1px solid #101010;
+		.border-radius(36px);
+		.check {
+			position: relative;
+			top: -2px;
+			left:0;
+			display: block;
+			.size(38px);
+			.border-radius(38px);
+			.bg("../img/icon/radio-button-icon.png",no-repeat,center,center);
+			background-color: @green;
+			.transition(left 250ms);
+		}
+
+		&.checked .check {
+			left:40px;
+		}
+	}
+
+	.block {
+		margin-bottom: 30px;
+	}
+}
+
+.sizes {
+	label {
+		display: block;
+		margin-bottom: 5px;
+	}
+	.column {
+		.inline-block;
+		margin-right: 10px;
+	}
+	input {
+		width: 70px;
+		text-align: center;
+	}
+
+	button {
+		width: 140px;
+	}
+}
+
+.categories, .filter {
+	.inline-block;
+	vertical-align: top;
+	margin-right: 30px;
+	a {
+		color:#fff;
+		&:hover {
+			color:@blue;
+		}
+		&.active {
+			position: relative;
+			color:@green;
+			&:after {
+				content:'x';
+				display: none;
+				.pos-rt(-15px,0px);
+				font-size: 16px;
+				font-weight: 700;
+			}
+			&:hover {
+				color:@red;
+				&:after { display: block; }
+			}
+		}
+	}
+
+	ul {
+		max-height: 300px;
+		overflow-x:scroll;
+	}
+}
+
+.filter {
+	margin-right: 0;
+}
+
+
+/*============================
+=            Main            =
+============================*/
+#main {
+	display: table;
+	.pos-rt(0,0);
+	.size(calc(~"100% - 300px"),100%);
+
+	.wrap {
+		display: table-cell;
+		vertical-align: middle;
+		height: 100%;
+
+		img.preview {
+			max-width: 90%;
+			max-height: 90%;
+			border:5px solid #ccc;
+			.box-shadow(3px 3px 2px 0px rgba(0, 0, 0, 0.4));
+		}
+	}
+
+	h1 { margin: 20px 0 15px; }
+
+	p {
+		color:@gray9b;
+	}
+}
+
+#development {
+	input {
+		padding: 16px 18px;
+		margin-bottom: 10px;
+		font-size: 22px;
+		min-width: 500px;
+	}
+
+	&>div.block {
+		width: 728px;
+		margin: 0 auto 40px;
+		text-align: left;
+	}
+}
+
+/*==============================
+=            Footer            =
+==============================*/
+footer {
+	.pos-rb(0,0);
+	.size(calc(~"100% - 300px"),auto);
+	padding: 10px 20px;
+	text-align: right;
+	font-size:12px;
+
+	ul, ul li { float: left; }
+}
+
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (max-width : 1045px) {
+	.visible-tablet { display: block; }
+	.visible-monitor { display: none; }
+}
+
+@media only screen
+and (min-width : 1045px) {
+	.visible-tablet { display: none; }
+	.visible-monitor { display: block; }
+}
+
+
+
+
+

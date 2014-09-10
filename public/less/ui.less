@@ -1,0 +1,21 @@
+*, *:before, *:after { .box-sizing(border-box); }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+.hide { display: none !important; }
+.full { width: 100%; }
+
+button {
+	padding: 8px 20px;
+	background-color: @blue;
+	color:#fff;
+	text-align: center;
+	font:700 16px @roboto;
+	-webkit-font-smoothing: antialiased;
+	.border-radius(2px);
+	.transition(background-color 250ms);
+	&:hover {
+		background-color: lighten(@blue,10);
+	}
+}

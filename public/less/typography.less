@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,latin-ext);
+@sans: Helvetica,Arial,serif;
+@roboto: 'Roboto', sans-serif;;
+
+body {
+	color:@black;
+	font:400 16px @roboto;
+	-webkit-font-smoothing: antialiased;
+	color:#fff;
+}
+
+strong { font-weight: 600; }
+
+a {
+	text-decoration: none;
+	color:@red;
+	.transition(color 250ms);
+	&:hover {
+		color:lighten(@red,20);
+	}
+}
+
+p {
+	line-height: 24px;
+	margin-bottom: 20px;
+}
+
+h6 {
+	.inline-block;
+	font:500 13px @roboto;
+	color:@text;
+	margin-bottom: 15px;
+	&:after {
+		content:'';
+		display: block;
+		.size(70%,1px);
+		margin: 5px 0;
+		background-color: @text;
+	}
+}
+
+h1 {
+	font:400 36px @roboto;
+}

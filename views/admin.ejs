@@ -1,0 +1,62 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node Authentication</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+  <script type="text/javascript">
+    var scotchTodo = angular.module('myApp', []);
+
+    function mainController($scope, $http) {
+
+      $scope.hop = function(){
+        alert($('#tags0').val());
+      }
+
+      $scope.addTag = function(id){
+        var tags = $('#tags'+id).val();
+        var imgId = $('#imgID'+id).val();
+        var tags_array = tags.split(',');
+
+        $http.post('/addtag/tag/'+imgId, tags_array)
+        .success(function(data) {
+          $scope.imgs = {};
+        })
+        .error(function() {
+          console.log('Error: ' + data);
+        });
+      }
+    }
+  </script>
+  <style>
+    body    { padding-top:20px; word-wrap:break-word; }
+  </style>
+</head>
+<body ng-controller="mainController">
+<div class="container">
+    <div class="jumbotron">
+        <h2>Test</h2>
+    </div>
+    <div style="margin-left:50px;">
+      <% imgs.forEach(function(img, index){ %>
+        <label style="float:left; list-style-type:none; padding-right:25px;">
+            <li><img width="240" height="240" src="/uploaded/files/<%- img.fileName %>"></li>
+            <input id="tags<%=index%>" name="etiket" type="text">
+            <input type="hidden" id="imgID<%=index%>" value="<%- img.fileName %>">
+            <input type="button" value="Etiketle" ng-click="addTag('<%=index%>')">
+        </label>
+        <% }); %>
+    </div>
+
+    <ul class="pager">
+      <li><a href="#">Previous</a></li>
+      <li><a href="/admin/2">Next</a></li>
+    </ul>
+
+</div>
+</body>
+</html>
